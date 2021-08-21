@@ -1,0 +1,54 @@
+<div class="card">
+  <h4 class="card-header">Dashboard</h4>
+  <div class="card-body">
+    <form [formGroup]="dashboard" (ngSubmit)="onSubmit()">
+      <div class="form-group">
+        <div class="justify-content-space-between">
+          <div>
+            <label for="pokemons">Wanna a browse pokemon?&nbsp;&nbsp;</label>
+            <span class="fake-link" id="fake-link-1" (click)="onSubmit()">Click here</span>
+          </div>
+          <div>
+            <button class="mr-2" type="button" routerLink="/favourite" routerLinkActive="active"><img
+                src="assets/images/star.svg" alt="" width="18px" class="mr-2">View Favourite</button>            
+          </div>
+        </div>
+        <div *ngIf="!pokemonList">
+          <img src="assets/images/pokeapi_256.png" alt="" width="250px" class="image-container">
+        </div>
+        <div *ngIf="pokemonList">
+          <div class="justify-content-space-between max-width-div">
+            <button *ngIf="pokeObjValue.previous" class="navigation-button" type="button" routerLinkActive="active" (click)="pagination(pokeObjValue.previous)">
+              Prev
+            </button>
+            <button  *ngIf="pokeObjValue.next" class="navigation-button" type="button" routerLinkActive="active" (click)="pagination(pokeObjValue.next)">
+              Next
+            </button>
+          </div>
+          <table class="table table-striped max-width-div">
+            <thead>
+              <tr>
+                <th scope="col">#</th>
+                <th scope="col">PokemonName</th>
+                <!--<th scope="col">Compare any two Pokemons</th>-->
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let item of pokemonList; let i = index">
+                <th scope="row">{{i+1}}</th>
+                <td (click)="pokemonDetail(item)">
+                  {{item.name}}
+                </td>
+                <!--
+                <td>
+                  <input type="checkbox" (change)="onChange(item, $event.target.checked)" />
+                </td>
+                -->
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>

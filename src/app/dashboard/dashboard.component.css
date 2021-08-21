@@ -1,0 +1,11 @@
+table{
+    cursor: pointer;
+}
+table th{
+  cursor:default;
+}
+.fake-link {
+  color: blue;
+  text-decoration: underline;
+  cursor: pointer;
+}

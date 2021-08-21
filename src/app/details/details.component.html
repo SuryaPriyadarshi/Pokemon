@@ -1,0 +1,58 @@
+<div class="card" id="pdfTable" #pdfTable>
+    <h4 class="card-header">Details of Pokemon</h4>
+    <div class="card-body">
+        <div class="justify-content-space-between">
+            <div></div>
+            <div>
+                <div class="image-container">
+                    <img src="{{pokemonDetail.sprites.back_default}}">
+                </div>
+            </div>
+            <div>
+                <button class="mr-2" type="button" (click)="addFavourite(pokemonDetail)"><img src="assets/images/star.svg" alt=""
+                        width="18px" class="mr-2">Add Favourite</button>
+                <button type="button" routerLink="/favourite" routerLinkActive="active"><img
+                        src="assets/images/star.svg" alt="" width="18px" class="mr-2">View Favourite</button>
+            </div>
+        </div>
+
+        <table class="table table-striped max-width-div">
+            <tbody>
+                <tr>
+                    <th scope="col">Name</th>
+                    <td scope="col">{{pokemonDetail.name}}</td>
+                </tr>
+                <tr>
+                    <th scope="col">Weight</th>
+                    <td scope="col">{{pokemonDetail.weight}}</td>
+                </tr>
+                <tr>
+                    <th scope="col">Height</th>
+                    <td scope="col">{{pokemonDetail.height}}</td>
+                </tr>
+                <tr>
+                    <th scope="col">Ability</th>
+                    <td scope="col">
+                        <ul>
+                            <li *ngFor="let a of pokemonDetail.abilities">
+                                <span>{{a.ability.name}}</span>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+                <tr>
+                    <th scope="col">Stats</th>
+                    <td scope="col">
+                        <ul>
+                            <li *ngFor="let b of pokemonDetail.stats">
+                                <span>Base Stat: {{b.base_stat}}</span><br>
+                                <span>Effort: {{b.effort}}</span><br>
+                                <span>Stat Name: {{b.stat.name}}</span>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
